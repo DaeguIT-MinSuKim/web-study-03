@@ -1,6 +1,7 @@
 package web_study_03;
 
 import java.io.IOException;
+import java.net.URLEncoder;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -49,8 +50,9 @@ public class ResearchServlet extends HttpServlet {
         request.setAttribute("gender", gender);
         request.setAttribute("season", seasonRes);
         
-        RequestDispatcher dispatcher = request.getRequestDispatcher("researchResult.jsp"); 
-        dispatcher.forward(request, response);
+//        RequestDispatcher dispatcher = request.getRequestDispatcher("researchResult.jsp"); 
+//        dispatcher.forward(request, response);
+        response.sendRedirect("researchResult.jsp?name="+URLEncoder.encode(name, "UTF-8")+"&gender="+URLEncoder.encode(gender, "UTF-8")+"&season="+URLEncoder.encode(seasonRes, "UTF-8"));
     }
 
 }
